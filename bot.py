@@ -194,7 +194,7 @@ def send_to_admin(txt):
     smtpObj.ehlo()
     smtpObj.starttls()
     smtpObj.login(sent[0], text[0])
-    # smtpObj.sendmail(sent[0], os.environ.get('ROBERT'), txt)
+    smtpObj.sendmail(sent[0], os.environ.get('ROBERT'), txt)
     smtpObj.sendmail(sent[0], os.environ.get('ME'), 'Subject: AP Server Management\n' + txt)
     smtpObj.quit()
 
