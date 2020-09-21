@@ -156,14 +156,14 @@ async def on_guild_channel_update(before, after):
 async def on_member_join(member):
     # send_to_admin(f'New member has joined')
     admin_council = client.get_channel(756964304519168081)
-    await admin_council.send('<@&756577058443755521> ' + f'{member.display_name}' + ' has joined the server')
+    await admin_council.send(f'<@&756577058443755521> {member.display_name} has joined the server')
 
 
 @client.event
 async def on_member_remove(member):
     # send_to_admin(f'A member has left the server')
     admin_council = client.get_channel(756964304519168081)
-    await admin_council.send('<@&756577058443755521> ' + f'{member.nick}' + ' has left the server')
+    await admin_council.send(f'<@&756577058443755521> {member.nick} has left the server')
 
 
 # @client.event
