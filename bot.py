@@ -103,7 +103,11 @@ async def on_message_delete(message):
     # print(f'{message.author.name} deleted a message')
     send_to_admin(f'A message by {message.author} in {message.channel} was deleted')
     deleted_msgs = client.get_channel(757668799163006997)
-    await deleted_msgs.send(f'{message.author} in {message.channel}: {message.content}')
+    if not message.attachments:
+        await deleted_msgs.send(f'{message.author} in {message.channel}: {message.content}')
+    else:
+        for file in message.attachments:
+            await deleted_msgs.send(f'{message.author} in {message.channel}: \n{file}')
     # print(f'A message by {message.author} in {message.channel} was deleted')
 
 
