@@ -69,6 +69,9 @@ async def on_message(message):
         except:
             await message.channel.send('Error occurred; please try again')
 
+    if message.content.startswith('!test'):
+        dev_channel = client.get_channel(756682147271671878)
+        await dev_channel.send('summoned')
     # if message.content.startswith('$senddm'):
     #
 
