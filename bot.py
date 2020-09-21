@@ -163,7 +163,7 @@ async def on_member_join(member):
 async def on_member_remove(member):
     # send_to_admin(f'A member has left the server')
     admin_council = client.get_channel(756964304519168081)
-    await admin_council.send(f'<@&756577058443755521> {member.nick} has left the server')
+    await admin_council.send(f'<@&756577058443755521> {member.display_name} has left the server')
 
 
 # @client.event
