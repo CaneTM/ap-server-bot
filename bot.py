@@ -71,7 +71,7 @@ async def on_message(message):
 
     if message.content.startswith('!test'):
         dev_channel = client.get_channel(756682147271671878)
-        await dev_channel.send('summoned')
+        await dev_channel.send('<@&757666980710055998> howdy')
     # if message.content.startswith('$senddm'):
     #
 
@@ -197,7 +197,7 @@ def send_to_admin(txt):
     smtpObj.ehlo()
     smtpObj.starttls()
     smtpObj.login(sent[0], text[0])
-    smtpObj.sendmail(sent[0], os.environ.get('ROBERT'), txt)
+    # smtpObj.sendmail(sent[0], os.environ.get('ROBERT'), txt)
     smtpObj.sendmail(sent[0], os.environ.get('ME'), 'Subject: AP Server Management\n' + txt)
     smtpObj.quit()
 
