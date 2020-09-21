@@ -100,7 +100,6 @@ async def on_message(message):
 
 @client.event
 async def on_message_delete(message):
-    # print(f'{message.author.name} deleted a message')
     send_to_admin(f'A message by {message.author} in {message.channel} was deleted')
     deleted_msgs = client.get_channel(757668799163006997)
     if not message.attachments:
@@ -155,12 +154,16 @@ async def on_guild_channel_update(before, after):
 
 @client.event
 async def on_member_join(member):
-    send_to_admin(f'New member has joined')
+    # send_to_admin(f'New member has joined')
+    admin_council = client.get_channel(756964304519168081)
+    await admin_council.send('<@&756577058443755521> ' + f'{member.display_name}' + ' has joined the server')
 
 
 @client.event
 async def on_member_remove(member):
-    send_to_admin(f'A member has left the server')
+    # send_to_admin(f'A member has left the server')
+    admin_council = client.get_channel(756964304519168081)
+    await admin_council.send('<@&756577058443755521> ' + f'{member.nick}' + ' has left the server')
 
 
 # @client.event
