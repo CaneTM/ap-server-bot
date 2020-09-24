@@ -65,7 +65,7 @@ async def on_message(message):
         comm = str(message.content).split(' ')
         try:
             lim = int(comm[1])
-            await message.channel.purge(limit=lim)
+            await message.channel.purge(limit=lim, check=is_not_pinned)
         except:
             await message.channel.send('Error occurred; please try again')
 
@@ -199,6 +199,10 @@ async def on_guild_role_update(before, after):
 @client.event
 async def on_member_ban(guild, user):
     send_to_admin(f'Member banned')
+
+
+def is_not_pinned(msg):
+    return not msg.pinned
 
 
 def send_to_admin(txt):
