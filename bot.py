@@ -1,5 +1,6 @@
 import discord
 import os
+import youtube_dl
 from dotenv import load_dotenv
 from discord.ext.commands import Bot
 import smtplib
@@ -15,6 +16,8 @@ Client = Bot('!')
 
 sent = ['ap.server.management@gmail.com']
 text = [MGMT]
+
+players = {}
 
 docMessage = "This bot is for admin use only. Much of the functionality has already been restricted to admin-only.\n" \
              "Access to the source code must be approved by an admin\n\n" \
@@ -69,9 +72,17 @@ async def on_message(message):
         except:
             await message.channel.send('Error occurred; please try again')
 
-    if message.content.startswith('!test'):
-        dev_channel = client.get_channel(756682147271671878)
-        await dev_channel.send('<@&757666980710055998> howdy')
+    if message.content.startswith('!play'):
+        try:
+            comm = message.content.split(' ')
+            url = comm[1]
+            serv = message.guild
+            voice_client = serv.voice_client
+            player = await voice_client.create_ytdl_player(url)
+            players[serv.id] = player
+            player.start()
+        except:
+            await message.channel.send('Error occurred; please try again')
     # if message.content.startswith('$senddm'):
     #
 
