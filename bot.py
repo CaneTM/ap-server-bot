@@ -88,13 +88,13 @@ async def on_message(message):
     #
 
 
-@Client.command()
+@Client.command(pass_context=True)
 async def join(ctx):
-    channel = ctx.author.voice.channel
+    channel = ctx.author.voice.voice_channel
     await channel.connect()
 
 
-@Client.command()
+@Client.command(pass_context=True)
 async def leave(ctx):
     await ctx.voice_client.disconnect()
 
