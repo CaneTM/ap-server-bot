@@ -73,7 +73,7 @@ async def on_message(message):
             await message.channel.send('Error occurred; please try again')
 
     if message.content.startswith('!play'):
-        voice_channel = message.author.voice.voice_channel
+        voice_channel = message.author.channel
         await message.guild.join_voice_channel(voice_channel)
         comm = message.content.split(' ')
         url = comm[1]
