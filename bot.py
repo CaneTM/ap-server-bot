@@ -1,21 +1,9 @@
-from __future__ import unicode_literals
-
 import discord
 import os
-import youtube_dl
 from dotenv import load_dotenv
 from discord.ext.commands import Bot
 import smtplib
 
-
-ydl_opts = {
-    'format': 'bestaudio/best',
-    'postprocessors': [{
-        'key': 'FFmpegExtractAudio',
-        'preferredcodec': 'mp3',
-        'preferredquality': '192',
-    }],
-}
 
 load_dotenv()
 
@@ -28,8 +16,6 @@ Client = Bot(command_prefix='!')
 
 sent = ['ap.server.management@gmail.com']
 text = [MGMT]
-
-players = {}
 
 docMessage = "This bot is for admin use only. Much of the functionality has already been restricted to admin-only.\n" \
              "Access to the source code must be approved by an admin\n\n" \
@@ -84,39 +70,9 @@ async def on_message(message):
         except:
             await message.channel.send('Error occurred; please try again')
 
-    if message.content.startswith('!play'):
-        channel = message.author.voice.channel
-        vc = await channel.connect()
-
-        with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-            ydl.download(['https://www.youtube.com/watch?v=G7f0OZXVqTg'])
-
-        # comm = message.content.split(' ')
-        # url = comm[1]
-
-        # player = await discord.PCMVolumeTransformer((url)
-        # source = discord.FFmpegPCMAudio(url)
-        # vc.play(source)
-        # serv = message.guild
-        # voice_client = serv.voice_client
-        # player = await (url)
-        # players[serv.id] = player
-        # player.start()
-        # except:
-        #     await message.channel.send('Error occurred; please try again')
-    # if message.content.startswith('$senddm'):
-    #
-
-
-@Client.command(pass_context=True)
-async def join(ctx):
-    channel = ctx.author.voice.voice_channel
-    await channel.connect()
-
-
-@Client.command(pass_context=True)
-async def leave(ctx):
-    await ctx.voice_client.disconnect()
+    # if message.content.startswith('!play'):
+    #     channel = message.author.voice.channel
+    #     vc = await channel.connect()
 
 
 # @Client.command(pass_context = True)
