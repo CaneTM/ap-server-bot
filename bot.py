@@ -75,7 +75,7 @@ async def on_message(message):
     if message.content.startswith('!play'):
         try:
             voice_channel = message.author.channel
-            voice_channel.connect()
+            await voice_channel.connect(voice_channel)
             comm = message.content.split(' ')
             url = comm[1]
             serv = message.guild
