@@ -73,7 +73,7 @@ async def on_message(message):
             await message.channel.send('Error occurred; please try again')
 
     if message.content.startswith('!join'):
-        channel = message.author.voice.voice_channel
+        channel = message.author.voice.channel
         await channel.connect()
     #     # voice_channel = message.channel.connect
     #     await discord.VoiceChannel.connect(reconnect=True)
