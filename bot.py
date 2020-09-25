@@ -12,7 +12,7 @@ TOKEN = os.environ.get('TOKEN')
 MGMT = os.environ.get('MGMT-EMAIL-PWRD')
 
 client = discord.Client()
-Client = Bot('!')
+Client = Bot(command_prefix='!')
 
 sent = ['ap.server.management@gmail.com']
 text = [MGMT]
