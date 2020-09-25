@@ -77,8 +77,11 @@ async def on_message(message):
         vc = await channel.connect()
         comm = message.content.split(' ')
         url = comm[1]
-        source = discord.FFmpegPCMAudio(url)
-        vc.play(source)
+
+        player = await vc.create_ytdl_player(url)
+        player.start()
+        # source = discord.FFmpegPCMAudio(url)
+        # vc.play(source)
         # serv = message.guild
         # voice_client = serv.voice_client
         # player = await (url)
