@@ -74,14 +74,16 @@ async def on_message(message):
 
     if message.content.startswith('!play'):
         channel = message.author.voice.channel
-        await channel.connect()
+        vc = await channel.connect()
         comm = message.content.split(' ')
         url = comm[1]
-        serv = message.guild
-        voice_client = serv.voice_client
-        player = await voice_client.create_ytdl_player(url)
-        players[serv.id] = player
-        player.start()
+        source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio(url))
+        vc.play(source)
+        # serv = message.guild
+        # voice_client = serv.voice_client
+        # player = await (url)
+        # players[serv.id] = player
+        # player.start()
         # except:
         #     await message.channel.send('Error occurred; please try again')
     # if message.content.startswith('$senddm'):
