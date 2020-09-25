@@ -72,18 +72,16 @@ async def on_message(message):
         except:
             await message.channel.send('Error occurred; please try again')
 
-    if message.content.startswith('!join'):
+    if message.content.startswith('!play'):
         channel = message.author.voice.channel
         await channel.connect()
-    #     # voice_channel = message.channel.connect
-    #     await discord.VoiceChannel.connect(reconnect=True)
-    #     comm = message.content.split(' ')
-    #     url = comm[1]
-    #     serv = message.guild
-    #     voice_client = serv.voice_client
-    #     player = await voice_client.create_ytdl_player(url)
-    #     players[serv.id] = player
-    #     player.start()
+        comm = message.content.split(' ')
+        url = comm[1]
+        serv = message.guild
+        voice_client = serv.voice_client
+        player = await voice_client.create_ytdl_player(url)
+        players[serv.id] = player
+        player.start()
         # except:
         #     await message.channel.send('Error occurred; please try again')
     # if message.content.startswith('$senddm'):
