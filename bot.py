@@ -1,9 +1,21 @@
+from __future__ import unicode_literals
+
 import discord
 import os
 import youtube_dl
 from dotenv import load_dotenv
 from discord.ext.commands import Bot
 import smtplib
+
+
+ydl_opts = {
+    'format': 'bestaudio/best',
+    'postprocessors': [{
+        'key': 'FFmpegExtractAudio',
+        'preferredcodec': 'mp3',
+        'preferredquality': '192',
+    }],
+}
 
 load_dotenv()
 
@@ -75,11 +87,14 @@ async def on_message(message):
     if message.content.startswith('!play'):
         channel = message.author.voice.channel
         vc = await channel.connect()
-        comm = message.content.split(' ')
-        url = comm[1]
 
-        player = await vc.create_ytdl_player(url)
-        player.start()
+        with youtube_dl.YoutubeDL(ydl_opts) as ydl:
+            ydl.download(['https://www.youtube.com/watch?v=G7f0OZXVqTg'])
+
+        # comm = message.content.split(' ')
+        # url = comm[1]
+
+        # player = await discord.PCMVolumeTransformer((url)
         # source = discord.FFmpegPCMAudio(url)
         # vc.play(source)
         # serv = message.guild
