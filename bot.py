@@ -77,7 +77,7 @@ async def on_message(message):
         vc = await channel.connect()
         comm = message.content.split(' ')
         url = comm[1]
-        source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio(url))
+        source = discord.FFmpegPCMAudio(url)
         vc.play(source)
         # serv = message.guild
         # voice_client = serv.voice_client
