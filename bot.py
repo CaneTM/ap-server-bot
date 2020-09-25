@@ -74,7 +74,7 @@ async def on_message(message):
 
     if message.content.startswith('!play'):
         try:
-            voice_channel = message.author.voice_channel
+            voice_channel = message.author.channel
             await voice_channel.connect()
             comm = message.content.split(' ')
             url = comm[1]
@@ -83,8 +83,10 @@ async def on_message(message):
             player = await voice_client.create_ytdl_player(url)
             players[serv.id] = player
             player.start()
-        except:
-            await message.channel.send('Error occurred; please try again')
+        finally:
+            print('error')
+        # except:
+        #     await message.channel.send('Error occurred; please try again')
     # if message.content.startswith('$senddm'):
     #
 
