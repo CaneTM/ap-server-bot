@@ -72,20 +72,31 @@ async def on_message(message):
         except:
             await message.channel.send('Error occurred; please try again')
 
-    if message.content.startswith('!play'):
-        # voice_channel = message.channel.connect
-        await message.guild.join_voice_channel()
-        comm = message.content.split(' ')
-        url = comm[1]
-        serv = message.guild
-        voice_client = serv.voice_client
-        player = await voice_client.create_ytdl_player(url)
-        players[serv.id] = player
-        player.start()
+    # if message.content.startswith('!play'):
+    #     # voice_channel = message.channel.connect
+    #     await discord.VoiceChannel.connect(reconnect=True)
+    #     comm = message.content.split(' ')
+    #     url = comm[1]
+    #     serv = message.guild
+    #     voice_client = serv.voice_client
+    #     player = await voice_client.create_ytdl_player(url)
+    #     players[serv.id] = player
+    #     player.start()
         # except:
         #     await message.channel.send('Error occurred; please try again')
     # if message.content.startswith('$senddm'):
     #
+
+
+@Client.command()
+async def join(ctx):
+    channel = ctx.author.voice.channel
+    await channel.connect()
+
+
+@Client.command()
+async def leave(ctx):
+    await ctx.voice_client.disconnect()
 
 
 # @Client.command(pass_context = True)
