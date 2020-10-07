@@ -17,6 +17,8 @@ Client = Bot(command_prefix='!')
 sent = ['ap.server.management@gmail.com']
 text = [MGMT]
 
+bots = 3
+
 docMessage = "This bot is for admin use only. Much of the functionality has already been restricted to admin-only.\n" \
              "Access to the source code must be approved by an admin\n\n" \
              "Commands:\n" \
@@ -56,7 +58,7 @@ async def on_message(message):
         for guild in client.guilds:
             for member in guild.members:
                 memberCount += 1
-            await message.channel.send('There are ' + str(memberCount) + ' people on this server')
+            await message.channel.send('There are ' + str(memberCount - bots) + ' people on this server')
             # await message.channel.send('\n'.join([member.name for member in guild.members]))
 
     if message.content.startswith('!documentation'):
