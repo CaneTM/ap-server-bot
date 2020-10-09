@@ -52,8 +52,6 @@ async def on_message(message):
 
     if message.content.startswith('!hello'):
         await message.channel.send('Hello!')
-        if message.author.display_name == 'Canaan':
-            await message.channel.send('ok!')
 
     if message.content.startswith('!members'):
         memberCount = 0
