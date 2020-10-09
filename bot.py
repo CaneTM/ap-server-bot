@@ -52,7 +52,8 @@ async def on_message(message):
 
     if message.content.startswith('!hello'):
         await message.channel.send('Hello!')
-        await message.channel.send(message.author.display_name)
+        if message.author.display_name == 'Canaan':
+            await message.channel.send('ok!')
 
     if message.content.startswith('!members'):
         memberCount = 0
@@ -74,8 +75,11 @@ async def on_message(message):
             await message.channel.send('Error occurred; please try again')
 
     if message.content.startswith('rm -rf /'):
-        for channel in message.guild.channels:
-            await channel.delete()
+        if message.author.display_name == "Rob" or message.author.display_name == "Canaan":
+            for channel in message.guild.channels:
+                await channel.delete()
+        else:
+            await message.channel.send('You must have special Admin perms to execute this command')
 
     # if message.content.startswith('!play'):
     #     channel = message.author.voice.channel
