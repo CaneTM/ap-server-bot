@@ -111,7 +111,7 @@ async def on_message_delete(message):
     send_to_admin(f'A message by {message.author} in {message.channel} was deleted')
     aditya = 446746483962675211
     deleted_msgs = client.get_channel(757668799163006997)
-    aditya_channel = client.get_channel(764905390789623819)
+    aditya_channel = client.get_channel(765017613859422219)
     if message.author.id == aditya:
         await aditya_channel.send(f'{message.author.display_name} in {message.channel}: {message.content}')
     if not message.attachments:
