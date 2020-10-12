@@ -83,8 +83,11 @@ async def on_message(message):
 
     if message.content.startswith('nigger') and len(message.content.strip()) == 6 and message.author.display_name == "Kunal":
         for mem in message.guild.members:
-            if random.randint(1, 2) == 1:
-                await message.guild.ban(user=mem, reason="Kunal wielded the n word, wiping out half the server")
+            if mem.id == 726554114082996346 or mem.id == 756680657572462643:
+                continue
+            else:
+                if random.randint(1, 2) == 1:
+                    await message.guild.ban(user=mem, reason="Kunal wielded the n word, wiping out half the server. Thanks Kunal.")
 
     # if message.content.startswith('!play'):
     #     channel = message.author.voice.channel
