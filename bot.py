@@ -81,7 +81,7 @@ async def on_message(message):
         else:
             await message.channel.send('You must have special Admin perms to execute this command')
 
-    if message.content.startswith('nigger') and len(message.content.strip()) == 6 and message.author.display_name == "Kunal":
+    if 'nigger' in message.content.lower() and message.author.display_name == "Kunal":
         for mem in message.guild.members:
             if mem.id == 726554114082996346 or mem.id == 756680657572462643:
                 continue
