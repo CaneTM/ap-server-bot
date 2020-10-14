@@ -50,8 +50,9 @@ async def on_message(message):
     # async for entry in message.channel.guild.audit_logs(limit=1):
     #     print('{0.user} did {0.action} to {0.target}'.format(entry))
 
-    if message.content.startswith('!hello'):
-        await message.channel.send('Hello!')
+    if message.content.startswith('!test'):
+        for role in message.author.roles:
+            await message.channel.send(role)
 
     if message.content.startswith('!members'):
         memberCount = 0
@@ -81,39 +82,17 @@ async def on_message(message):
         else:
             await message.channel.send('You must have special Admin perms to execute this command')
 
-    if 'nigger' in message.content.lower() and message.author.display_name == "Kunal":
-        for mem in message.guild.members:
-            if mem.id == 726554114082996346 or mem.id == 756680657572462643:
-                continue
-            else:
-                if random.randint(1, 2) == 1:
-                    await message.guild.ban(user=mem, reason="Kunal wielded the n word, wiping out half the server. Thanks Kunal.")
+    # if 'nigger' in message.content.lower() and message.author.display_name == "Kunal":
+    #     for mem in message.guild.members:
+    #         if mem.id == 726554114082996346 or mem.id == 756680657572462643:
+    #             continue
+    #         else:
+    #             if random.randint(1, 2) == 1:
+    #                 await message.guild.ban(user=mem, reason="Kunal wielded the n word, wiping out half the server. Thanks Kunal.")
 
     # if message.content.startswith('!play'):
     #     channel = message.author.voice.channel
     #     vc = await channel.connect()
-
-
-# @Client.command(pass_context = True)
-# async def clear(ctx, number):
-#     mgs = [] #Empty list to put all the messages in the log
-#     number = int(number) #Converting the amount of messages to delete to an integer
-#     async for x in Client.logs_from(ctx.message.channel, limit = number):
-#         mgs.append(x)
-#     await Client.delete_messages(mgs)
-
-
-# @client.event
-# async def on_member_join(member):
-
-# async for entry in guild.audit_logs(limit=1):
-#     print('{0.user} did {0.action} to {0.target}'.format(entry))
-
-
-# await member.create_dm()
-# await member.dm_channel.send(
-#     f'Hi {member.name}, welcome to my Discord server!'
-# )
 
 
 @client.event
@@ -237,4 +216,4 @@ def send_to_admin(txt):
     smtpObj.quit()
 
 
-# client.run(TOKEN)  # TODO: ADD TOKEN
+client.run(TOKEN)  # TODO: ADD TOKEN
