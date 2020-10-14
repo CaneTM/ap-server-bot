@@ -52,7 +52,7 @@ async def on_message(message):
 
     if message.content.startswith('!test'):
         for role in message.author.roles:
-            await message.channel.send(role)
+            await message.channel.send(type(role))
 
     if message.content.startswith('!members'):
         memberCount = 0
