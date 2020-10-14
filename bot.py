@@ -51,8 +51,8 @@ async def on_message(message):
     #     print('{0.user} did {0.action} to {0.target}'.format(entry))
 
     if message.content.startswith('!test'):
-        for role in message.author.roles:
-            await message.channel.send(type(role))
+        if "Admin" in message.author.roles:
+            await message.channel.send('You have Admin role')
 
     if message.content.startswith('!members'):
         memberCount = 0
