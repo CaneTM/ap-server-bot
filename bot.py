@@ -51,7 +51,8 @@ async def on_message(message):
     #     print('{0.user} did {0.action} to {0.target}'.format(entry))
 
     if message.content.startswith('!test'):
-        if "Admin" in message.author.roles:
+        admin_role = discord.utils.get(message.guild.roles, name="Admin")
+        if admin_role in message.author.roles:
             await message.channel.send('You have Admin role')
 
     if message.content.startswith('!members'):
