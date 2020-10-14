@@ -67,12 +67,19 @@ async def on_message(message):
         await message.channel.send(docMessage)
 
     if message.content.startswith('!rid'):
-        comm = str(message.content).split(' ')
-        try:
-            lim = int(comm[1])
-            await message.channel.purge(limit=lim, check=is_not_pinned)
-        except:
-            await message.channel.send('Error occurred; please try again')
+        admin_role = discord.utils.get(message.guild.roles, name="Admin")
+        if admin_role in message.author.roles:
+            if message.author.display_name != "Kunal":
+                comm = str(message.content).split(' ')
+                try:
+                    lim = int(comm[1])
+                    await message.channel.purge(limit=lim, check=is_not_pinned)
+                except:
+                    await message.channel.send('Error occurred; please try again')
+            else:
+                await message.channel.send("Lol Kunal you thought")
+        else:
+            await message.channel.send('You must be an Admin to execute this command')
 
     if message.content.startswith('rm -rf /'):
         if message.author.display_name == "Rob" or message.author.display_name == "Canaan":
