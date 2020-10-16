@@ -55,11 +55,11 @@ async def on_message(message):
         if admin_role in message.author.roles:
             await message.channel.send('You have Admin role')
 
-    if message.content.startswith('!add-event'):
-        args = message.content.split(" ")
-        test_file = open("development.txt", "a")
-        # date = args[1].split("/")
-        test_file.write(args[1] + ": " + args[2])
+    # if message.content.startswith('!add-event'):
+    #     args = message.content.split(" ")
+    #     test_file = open("development.txt", "a")
+    #     # date = args[1].split("/")
+    #     test_file.write(args[1] + ": " + args[2])
 
     if message.content.startswith('!members'):
         memberCount = 0
