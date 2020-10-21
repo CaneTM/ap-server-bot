@@ -18,7 +18,7 @@ Client = Bot(command_prefix='!')
 sent = ['ap.server.management@gmail.com']
 text = [MGMT]
 
-bots = 4
+bots = 5
 
 docMessage = "This bot is for admin use only. Much of the functionality has already been restricted to admin-only.\n" \
              "Access to the source code must be approved by an admin\n\n" \
