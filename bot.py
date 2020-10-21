@@ -75,7 +75,7 @@ async def on_message(message):
     if message.content.startswith('!rid'):
         admin_role = discord.utils.get(message.guild.roles, name="Admin")
         if admin_role in message.author.roles:
-            if message.author.display_name != "Kunal":
+            if message.author.id != 492465169377656849:
                 comm = str(message.content).split(' ')
                 try:
                     lim = int(comm[1])
