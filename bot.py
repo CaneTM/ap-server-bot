@@ -53,7 +53,7 @@ async def on_message(message):
     if message.content.startswith('!test'):
         admin_role = discord.utils.get(message.guild.roles, name="Admin")
         if admin_role in message.author.roles:
-            await message.channel.send('You have Admin role')
+            await message.channel.send('this is a test message')
 
     # if message.content.startswith('!add-event'):
     #     args = message.content.split(" ")
