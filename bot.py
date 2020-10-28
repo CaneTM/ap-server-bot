@@ -52,7 +52,7 @@ async def on_message(message):
 
     if message.content.startswith('!test'):
         for m in message.guild.members:
-            await message.channel.send(m.display_name)
+            await message.channel.send("changed")
         # admin_role = discord.utils.get(message.guild.roles, name="Admin")
         # if admin_role in message.author.roles:
         #     await message.channel.send('this is a test message')
