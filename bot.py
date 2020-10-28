@@ -51,8 +51,8 @@ async def on_message(message):
     #     print('{0.user} did {0.action} to {0.target}'.format(entry))
 
     if message.content.startswith('!test'):
-        for c in client.get_all_channels():
-            await message.channel.send(client.get_all_channels())
+        async for member in guild.fetch_members():
+            await message.channel.send(member.display_name)
         # admin_role = discord.utils.get(message.guild.roles, name="Admin")
         # if admin_role in message.author.roles:
         #     await message.channel.send('this is a test message')
