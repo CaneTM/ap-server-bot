@@ -51,8 +51,7 @@ async def on_message(message):
     #     print('{0.user} did {0.action} to {0.target}'.format(entry))
 
     if message.content.startswith('!test'):
-        unverified = client.get_channel(765986971662811218)
-        for m in unverified.members:
+        for m in message.guild.members:
             await message.channel.send(m.display_name)
         # admin_role = discord.utils.get(message.guild.roles, name="Admin")
         # if admin_role in message.author.roles:
