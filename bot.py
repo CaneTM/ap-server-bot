@@ -51,9 +51,11 @@ async def on_message(message):
     #     print('{0.user} did {0.action} to {0.target}'.format(entry))
 
     if message.content.startswith('!test'):
-        admin_role = discord.utils.get(message.guild.roles, name="Admin")
-        if admin_role in message.author.roles:
-            await message.channel.send('this is a test message')
+        unverified = client.get_channel(768184625368662057)
+        await message.channel.send(unverified.members)
+        # admin_role = discord.utils.get(message.guild.roles, name="Admin")
+        # if admin_role in message.author.roles:
+        #     await message.channel.send('this is a test message')
 
     # if message.content.startswith('!add-event'):
     #     args = message.content.split(" ")
@@ -167,6 +169,7 @@ async def on_guild_channel_update(before, after):
 async def on_member_join(member):
     # send_to_admin(f'New member has joined')
     admin_council = client.get_channel(756964304519168081)
+    unverified = client.get_channel(768184625368662057)
     await admin_council.send(f'<@&756577058443755521> {member.display_name} has joined the server')
 
 
