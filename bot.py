@@ -62,12 +62,8 @@ async def on_message(message):
     #     test_file.write(args[1] + ": " + args[2])
 
     if message.content.startswith('!members'):
-        memberCount = 0
-        for guild in client.guilds:
-            for member in guild.members:
-                memberCount += 1
-            await message.channel.send('There are ' + str(memberCount - bots) + ' people on this server')
-            # await message.channel.send('\n'.join([member.name for member in guild.members]))
+        await message.channel.send('There are ' + str(message.guild.member_count - bots) + ' people on this server')
+        # await message.channel.send('\n'.join([member.name for member in guild.members]))
 
     if message.content.startswith('!documentation'):
         await message.channel.send(docMessage)
