@@ -52,7 +52,8 @@ async def on_message(message):
 
     if message.content.startswith('!test'):
         unverified = client.get_channel(768184625368662057)
-        await message.channel.send(unverified.members)
+        for m in unverified.members:
+            await message.channel.send(m.display_name)
         # admin_role = discord.utils.get(message.guild.roles, name="Admin")
         # if admin_role in message.author.roles:
         #     await message.channel.send('this is a test message')
