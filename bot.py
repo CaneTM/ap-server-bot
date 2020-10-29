@@ -1,6 +1,6 @@
 import random
 import datetime
-import discord
+import discord          # might need to change requirements.txt to 1.5.1
 import os
 from dotenv import load_dotenv
 from discord.ext.commands import Bot
@@ -51,7 +51,7 @@ async def on_message(message):
     #     print('{0.user} did {0.action} to {0.target}'.format(entry))
 
     if message.content.startswith('!test'):
-        await message.channel.send("this is a test message")
+        await message.channel.send("BRUH")
         # admin_role = discord.utils.get(message.guild.roles, name="Admin")
         # if admin_role in message.author.roles:
         #     await message.channel.send('this is a test message')
