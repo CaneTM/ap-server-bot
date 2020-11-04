@@ -4,6 +4,8 @@ import discord          # might need to change requirements.txt to 1.5.1
 import os
 from dotenv import load_dotenv
 from discord.ext.commands import Bot
+from LangtonMain import chosen
+from LangtonMain import mainLoop
 import smtplib
 
 load_dotenv()
@@ -51,7 +53,7 @@ async def on_message(message):
     #     print('{0.user} did {0.action} to {0.target}'.format(entry))
 
     if message.content.startswith('!test'):
-        await message.channel.send("BRUH")
+        await message.channel.send("new test")
         # admin_role = discord.utils.get(message.guild.roles, name="Admin")
         # if admin_role in message.author.roles:
         #     await message.channel.send('this is a test message')
@@ -61,6 +63,9 @@ async def on_message(message):
     #     test_file = open("development.txt", "a")
     #     # date = args[1].split("/")
     #     test_file.write(args[1] + ": " + args[2])
+
+    if message.content.startswith('!draw'):
+        mainLoop(chosen)
 
     if message.content.startswith('!members'):
         await message.channel.send('There are ' + str(message.guild.member_count - bots) + ' people on this server')
