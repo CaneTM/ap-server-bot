@@ -4,8 +4,6 @@ import discord          # might need to change requirements.txt to 1.5.1
 import os
 from dotenv import load_dotenv
 from discord.ext.commands import Bot
-from LangtonMain import chosen
-from LangtonMain import mainLoop
 import smtplib
 
 load_dotenv()
@@ -63,9 +61,6 @@ async def on_message(message):
     #     test_file = open("development.txt", "a")
     #     # date = args[1].split("/")
     #     test_file.write(args[1] + ": " + args[2])
-
-    if message.content.startswith('!draw'):
-        mainLoop(chosen)
 
     if message.content.startswith('!members'):
         await message.channel.send('There are ' + str(message.guild.member_count - bots) + ' people on this server')
