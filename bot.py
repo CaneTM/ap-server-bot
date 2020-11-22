@@ -18,7 +18,7 @@ Client = Bot(command_prefix='!')
 sent = ['ap.server.management@gmail.com']
 text = [MGMT]
 
-bots = 5
+bots = 6
 
 docMessage = "This bot is for admin use only. Much of the functionality has already been restricted to admin-only.\n" \
              "Access to the source code must be approved by an admin\n\n" \
@@ -51,7 +51,7 @@ async def on_message(message):
     #     print('{0.user} did {0.action} to {0.target}'.format(entry))
 
     if message.content.startswith('!test'):
-        await message.channel.send("new test")
+        await message.channel.send("updated successfully")
         # admin_role = discord.utils.get(message.guild.roles, name="Admin")
         # if admin_role in message.author.roles:
         #     await message.channel.send('this is a test message')
