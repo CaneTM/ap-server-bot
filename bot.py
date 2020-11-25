@@ -51,8 +51,8 @@ async def on_ready():
 @tasks.loop(seconds=1)
 async def everyInterval():
     devChannel = client.get_channel(756682147271671878)
-    if datetime.datetime.now() == scheduledTime:
-        await devChannel.send(f"This message was scheduled to go up at {datetime.datetime.now()}")
+    # if datetime.datetime.now() == scheduledTime:
+    await devChannel.send(f"This message was scheduled to go up at {datetime.datetime.now()}")
 
 
 @everyInterval.before_loop
