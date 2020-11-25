@@ -27,7 +27,7 @@ docMessage = "This bot is for admin use only. Much of the functionality has alre
              "- !members: prints out # of members\n" \
              "- !rid x: x is the amount of messages to be deleted (as int; 100 max)"
 
-scheduledTime = datetime.time(hour=1, minute=34, second=0, microsecond=0)
+scheduledTime = datetime.time(hour=1, minute=35, second=0, microsecond=0)
 
 
 @client.event
@@ -246,5 +246,5 @@ def send_to_admin(txt):
     smtpObj.quit()
 
 
-# everyInterval.start()
+everyInterval.start()
 client.run(TOKEN)
