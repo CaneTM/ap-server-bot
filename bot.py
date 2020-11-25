@@ -70,7 +70,12 @@ async def on_message(message):
     #     print('{0.user} did {0.action} to {0.target}'.format(entry))
 
     if message.content.startswith('!test'):
-        await message.channel.send("updated successfully")
+        eventsFile = open("C:\kuya-dev\IdeaProjects2\discord-bot\allEvents.txt", 'r')
+        line = eventsFile.readline()
+
+        while line:
+            await message.channel.send(f'{line}')
+            line = eventsFile.readline()
         # admin_role = discord.utils.get(message.guild.roles, name="Admin")
         # if admin_role in message.author.roles:
         #     await message.channel.send('this is a test message')
@@ -247,5 +252,5 @@ def send_to_admin(txt):
     smtpObj.quit()
 
 
-everyInterval.start()
+# everyInterval.start()
 client.run(TOKEN)
