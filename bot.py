@@ -27,7 +27,7 @@ docMessage = "This bot is for admin use only. Much of the functionality has alre
              "- !members: prints out # of members\n" \
              "- !rid x: x is the amount of messages to be deleted (as int; 100 max)"
 
-scheduledTime = datetime.time(1, 21, 0)
+scheduledTime = datetime.datetime.now().replace(hour=1, minute=24, second=0, microsecond=0)
 
 
 @client.event
