@@ -4,6 +4,7 @@ import discord          # might need to change requirements.txt to 1.5.1
 import os
 from dotenv import load_dotenv
 from discord.ext.commands import Bot
+from discord.ext import tasks
 import smtplib
 
 load_dotenv()
@@ -43,6 +44,18 @@ async def on_ready():
 
     # members = '\n - '.join([member.name for member in guild.members])
     # print(f'Guild Members:\n - {members}')
+
+
+@tasks.loop(seconds=5)
+async def everyFiveSeconds():
+    devChannel = client.get_channel(756682147271671878)
+    await devChannel.send("This message is sent every 5 seconds")
+
+
+@everyFiveSeconds.before_loop
+async def before():
+    await client.wait_until_ready()
+    print("Finished waiting")
 
 
 @client.event
@@ -228,4 +241,5 @@ def send_to_admin(txt):
     smtpObj.quit()
 
 
+everyFiveSeconds.start()
 client.run(TOKEN)  # TODO: ADD TOKEN
