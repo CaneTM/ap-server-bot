@@ -27,6 +27,8 @@ docMessage = "This bot is for admin use only. Much of the functionality has alre
              "- !members: prints out # of members\n" \
              "- !rid x: x is the amount of messages to be deleted (as int; 100 max)"
 
+scheduledTime = datetime.time(1, 21, 0)
+
 
 @client.event
 async def on_ready():
@@ -46,13 +48,14 @@ async def on_ready():
     # print(f'Guild Members:\n - {members}')
 
 
-@tasks.loop(seconds=5)
-async def everyFiveSeconds():
+@tasks.loop(seconds=1)
+async def everyInterval():
     devChannel = client.get_channel(756682147271671878)
-    await devChannel.send("This message is sent every 5 seconds")
+    if datetime.datetime.now() == scheduledTime:
+        await devChannel.send(f"This message was scheduled to go up at {datetime.datetime.now()}")
 
 
-@everyFiveSeconds.before_loop
+@everyInterval.before_loop
 async def before():
     await client.wait_until_ready()
     print("Finished waiting")
@@ -241,5 +244,5 @@ def send_to_admin(txt):
     smtpObj.quit()
 
 
-# everyFiveSeconds.start()
+everyInterval.start()
 client.run(TOKEN)
