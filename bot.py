@@ -27,7 +27,7 @@ docMessage = "This bot is for admin use only. Much of the functionality has alre
              "- !members: prints out # of members\n" \
              "- !rid x: x is the amount of messages to be deleted (as int; 100 max)"
 
-scheduledTime = datetime.time(hour=1, minute=35, second=0, microsecond=0)
+scheduledTime = datetime.time(hour=1, minute=43, second=0, microsecond=0)
 
 
 @client.event
@@ -55,6 +55,7 @@ async def everyInterval():
     if datetime.datetime.now().minute == scheduledTime.minute and \
             int(datetime.datetime.now().second) == scheduledTime.second:
         await devChannel.send(f"This message was scheduled to go up at {datetime.datetime.now()}")
+        everyInterval.cancel()
 
 
 @everyInterval.before_loop
