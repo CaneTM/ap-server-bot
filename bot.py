@@ -241,5 +241,5 @@ def send_to_admin(txt):
     smtpObj.quit()
 
 
-everyFiveSeconds.start()
-client.run(TOKEN)  # TODO: ADD TOKEN
+# everyFiveSeconds.start()
+client.run(TOKEN)
