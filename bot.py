@@ -74,14 +74,22 @@ async def on_ready():
     # print(f'Guild Members:\n - {members}')
 
 
-@tasks.loop(seconds=1)
+@tasks.loop(seconds=3)
 async def everyInterval():
     devChannel = client.get_channel(756682147271671878)
+    eventsFile = open("./allEvents.txt", 'r')
+    line = eventsFile.readline()
 
-    if datetime.datetime.now().minute == scheduledTime.minute and \
-            int(datetime.datetime.now().second) == scheduledTime.second:
-        await devChannel.send(f"This message was scheduled to go up at {datetime.datetime.now()}")
-        everyInterval.cancel()
+    while line:
+        args = line.split(" ")
+        if datetime.datetime.now().month == args[0] and datetime.datetime.now().day == args[1]:
+            await devChannel.send("yolo")
+        line = eventsFile.readline()
+
+    # if datetime.datetime.now().minute == scheduledTime.minute and \
+    #         int(datetime.datetime.now().second) == scheduledTime.second:
+    #     await devChannel.send(f"This message was scheduled to go up at {datetime.datetime.now()}")
+    #     everyInterval.cancel()
 
 
 @everyInterval.before_loop
@@ -302,5 +310,5 @@ def send_to_admin(txt):
     smtpObj.quit()
 
 
-# everyInterval.start()
+everyInterval.start()
 client.run(TOKEN)
