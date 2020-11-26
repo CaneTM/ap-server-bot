@@ -111,9 +111,11 @@ async def on_message(message):
         # args = argsStr.split(" ")
         # event = args[0].replace("-", " ")
 
-        eventsFile = open("./allEvents.txt", 'a')
+        while True:
+            eventsFile = open("./allEvents.txt", 'a')
         # eventsFile.write(f'{args[1]} {args[2]} {channels[str(message.channel.id)]}\n')
-        await message.channel.send("set-rem called")
+            eventsFile.write("hello world\n")
+            break
         # eventsFile.close()
 
     if message.content.startswith('!callBot'):
