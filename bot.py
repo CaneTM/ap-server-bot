@@ -310,5 +310,5 @@ def send_to_admin(txt):
     smtpObj.quit()
 
 
-everyInterval.start()
+# everyInterval.start()
 client.run(TOKEN)
