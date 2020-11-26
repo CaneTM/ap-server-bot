@@ -106,16 +106,24 @@ async def on_message(message):
         # if admin_role in message.author.roles:
         #     await message.channel.send('this is a test message')
 
+    if message.content.startswith('!get-content'):
+        eventsFile = open("./allEvents.txt", 'r')
+        line = eventsFile.readline()
+
+        while line:
+            await message.channel.send(f'{line}')
+            line = eventsFile.readline()
+
     if message.content.startswith('!set-rem'):
-        # argsStr = message.content[9:]
-        # args = argsStr.split(" ")
+        argsStr = message.content[9:]
+        args = argsStr.split(" ")
         # event = args[0].replace("-", " ")
 
         eventsFile = open("./allEvents.txt", 'a')
-        eventsFile.write("hello world\n")
+        # eventsFile.write("hello world\n")
         # while True:
         #     eventsFile = open("./allEvents.txt", 'a')
-        # eventsFile.write(f'{args[1]} {args[2]} {channels[str(message.channel.id)]}\n')
+        eventsFile.write(f'{args[1]} {args[2]} {channels[str(message.channel.id)]}\n')
         #     eventsFile.write("hello world\n")
         #     break
         # eventsFile.close()
