@@ -70,7 +70,7 @@ async def on_message(message):
     #     print('{0.user} did {0.action} to {0.target}'.format(entry))
 
     if message.content.startswith('!test'):
-        eventsFile = open("C:\\kuya-dev\\IdeaProjects2\\discord-bot\\allEvents.txt", 'r')
+        eventsFile = open("./allEvents.txt", 'r')
         line = eventsFile.readline()
 
         while line:
