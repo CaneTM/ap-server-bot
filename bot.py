@@ -19,6 +19,32 @@ Client = Bot(command_prefix='!')
 sent = ['ap.server.management@gmail.com']
 text = [MGMT]
 
+channels = {
+    "756964304519168081": "events",
+    "756682147271671878": "events",
+    "753649856119177349": "bio",
+    "753646601448194138": "calc",
+    "756567757465583648": "chem",
+    "753645688683757569": "csa",
+    "756567861954347039": "euro",
+    "760911023733080075": "french",
+    "756568017940381748": "geo",
+    "760911386862813255": "german",
+    "753648033677312011": "gov",
+    "757800345538789379": "lang",
+    "753648691793100822": "lit",
+    "757652763743354971": "macro",
+    "756568190942969897": "micro",
+    "753650665590489149": "musicTheory",
+    "753650111036522596": "phys1",
+    "768637446535512084": "physC",
+    "756568106964615218": "psych",
+    "753651208274706472": "spanish",
+    "753646338998009966": "stats",
+    "753659687404175542": "apush",
+    "762733248341606481": "multi"
+}
+
 bots = 7
 
 docMessage = "This bot is for admin use only. Much of the functionality has already been restricted to admin-only.\n" \
@@ -79,6 +105,15 @@ async def on_message(message):
         # admin_role = discord.utils.get(message.guild.roles, name="Admin")
         # if admin_role in message.author.roles:
         #     await message.channel.send('this is a test message')
+
+    if message.content.startswith('!set-rem'):
+        argsStr = message.content[9:]
+        args = argsStr.split(" ")
+        event = args[0].replace("-", " ")
+
+        eventsFile = open("./allEvents.txt", 'a')
+        eventsFile.write(f'{args[1]} {args[2]} {channels[str(message.channel.id)]}\n')
+        eventsFile.close()
 
     if message.content.startswith('!callBot'):
         await message.channel.send('!omicron')
