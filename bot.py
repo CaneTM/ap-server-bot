@@ -74,6 +74,12 @@ async def on_ready():
     # print(f'Guild Members:\n - {members}')
 
 
+@tasks.loop(hours=24)
+async def bruhChain():
+    bruhChannel = client.get_channel(780840139055300660)
+    await bruhChannel.send("BRUH")
+
+
 @tasks.loop(seconds=3)
 async def everyInterval():
     devChannel = client.get_channel(756682147271671878)
@@ -93,6 +99,12 @@ async def everyInterval():
 
 
 @everyInterval.before_loop
+async def before():
+    await client.wait_until_ready()
+    print("Finished waiting")
+
+
+@bruhChain.before_loop
 async def before():
     await client.wait_until_ready()
     print("Finished waiting")
@@ -311,4 +323,5 @@ def send_to_admin(txt):
 
 
 # everyInterval.start()
+bruhChain.start()
 client.run(TOKEN)
