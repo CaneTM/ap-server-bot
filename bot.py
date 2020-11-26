@@ -114,7 +114,7 @@ async def on_message(message):
         eventsFile = open("./allEvents.txt", 'a')
         # eventsFile.write(f'{args[1]} {args[2]} {channels[str(message.channel.id)]}\n')
         eventsFile.write("hello world\n")
-        eventsFile.close()
+        # eventsFile.close()
 
     if message.content.startswith('!callBot'):
         await message.channel.send('!omicron')
