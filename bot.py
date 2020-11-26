@@ -80,7 +80,7 @@ async def on_message(message):
         # if admin_role in message.author.roles:
         #     await message.channel.send('this is a test message')
 
-    if message.content.startswith('!test2'):
+    if message.content.startswith('!callBot'):
         await message.channel.send('!omicron')
 
     # if message.content.startswith('!add-event'):
