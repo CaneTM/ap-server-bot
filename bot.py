@@ -117,9 +117,8 @@ async def on_message(message):
 
     if message.content.startswith('!count'):
         msgs = 0
-        async for message in message.channel.history(limit=200):
-            if message.author == client.user:
-                msgs += 1
+        async for message in message.channel.history():
+            msgs += 1
         await message.channel.send(msgs)
 
     if message.content.startswith('!test'):
@@ -330,5 +329,5 @@ def send_to_admin(txt):
 
 
 # everyInterval.start()
-bruhChain.start()
+# bruhChain.start()
 client.run(TOKEN)
