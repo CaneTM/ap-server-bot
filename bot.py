@@ -117,7 +117,7 @@ async def on_message(message):
 
     if message.content.startswith('!count'):
         msgs = 0
-        async for message in message.channel.history():
+        async for message in message.channel.history(limit=200):
             msgs += 1
         count = msgs - 1
         await message.channel.send(count)
