@@ -119,7 +119,8 @@ async def on_message(message):
         msgs = 0
         async for message in message.channel.history():
             msgs += 1
-        await message.channel.send(msgs)
+        count = msgs - 1
+        await message.channel.send(count)
 
     if message.content.startswith('!test'):
         eventsFile = open("./allEvents.txt", 'r')
