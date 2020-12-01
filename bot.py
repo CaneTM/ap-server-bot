@@ -115,6 +115,13 @@ async def on_message(message):
     # async for entry in message.channel.guild.audit_logs(limit=1):
     #     print('{0.user} did {0.action} to {0.target}'.format(entry))
 
+    if message.content.startswith('!count'):
+        msgs = 0
+        async for message in message.channel.history(limit=200):
+            if message.author == client.user:
+                msgs += 1
+        await message.channel.send(msgs)
+
     if message.content.startswith('!test'):
         eventsFile = open("./allEvents.txt", 'r')
         line = eventsFile.readline()
