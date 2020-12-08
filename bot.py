@@ -115,8 +115,8 @@ async def on_message(message):
     # async for entry in message.channel.guild.audit_logs(limit=1):
     #     print('{0.user} did {0.action} to {0.target}'.format(entry))
 
-    if message.author.id == 651107778278064139:
-        await message.delete()
+    # if message.author.id == 651107778278064139:
+    #     await message.delete()
 
     if message.content.startswith('!count'):
         msgs = 0
