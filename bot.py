@@ -54,6 +54,7 @@ docMessage = "This bot is for admin use only. Much of the functionality has alre
              "- !rid x: x is the amount of messages to be deleted (as int; 100 max)"
 
 scheduledTime = datetime.time(hour=1, minute=43, second=0, microsecond=0)
+upenn = datetime.time(hour=19, minute=0, second=0, microsecond=0)
 
 
 @client.event
@@ -128,6 +129,9 @@ async def on_message(message):
             await message.channel.send(count)
         else:
             await message.channel.send('You must be an Admin to execute this command')
+
+    if message.content.startswith('!timeLeftTilUpenn'):
+        await message.channel.send(f'{upenn.hour - datetime.datetime.now().hour} hrs until Srikar gets into UPenn')
 
     if message.content.startswith('!test'):
         eventsFile = open("./allEvents.txt", 'r')
