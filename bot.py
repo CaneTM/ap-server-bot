@@ -131,7 +131,7 @@ async def on_message(message):
             await message.channel.send('You must be an Admin to execute this command')
 
     if message.content.startswith('!time'):
-        await message.channel.send(f'{upenn.hour} hrs until Srikar gets into UPenn')
+        await message.channel.send(f'{datetime.datetime.now().hour}')
 
     if message.content.startswith('!test'):
         eventsFile = open("./allEvents.txt", 'r')
