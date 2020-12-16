@@ -119,11 +119,15 @@ async def on_message(message):
     #     await message.delete()
 
     if message.content.startswith('!count'):
-        msgs = 0
-        async for message in message.channel.history(limit=5000):
-            msgs += 1
-        count = msgs - 1
-        await message.channel.send(count)
+        admin_role = discord.utils.get(message.guild.roles, name="Admin")
+        if admin_role in message.author.roles:
+            msgs = 0
+            async for message in message.channel.history(limit=5000):
+                msgs += 1
+            count = msgs - 1
+            await message.channel.send(count)
+        else:
+            await message.channel.send('You must be an Admin to execute this command')
 
     if message.content.startswith('!test'):
         eventsFile = open("./allEvents.txt", 'r')
@@ -176,15 +180,12 @@ async def on_message(message):
     if message.content.startswith('!rid'):
         admin_role = discord.utils.get(message.guild.roles, name="Admin")
         if admin_role in message.author.roles:
-            if message.author.id != 492465169377656849:
-                comm = str(message.content).split(' ')
-                try:
-                    lim = int(comm[1])
-                    await message.channel.purge(limit=lim, check=is_not_pinned)
-                except:
-                    await message.channel.send('Error occurred; please try again')
-            else:
-                await message.channel.send("Lol Kunal you thought")
+            comm = str(message.content).split(' ')
+            try:
+                lim = int(comm[1])
+                await message.channel.purge(limit=lim, check=is_not_pinned)
+            except:
+                await message.channel.send('Error occurred; please try again')
         else:
             await message.channel.send('You must be an Admin to execute this command')
 
