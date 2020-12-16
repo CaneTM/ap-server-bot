@@ -122,7 +122,7 @@ async def on_message(message):
         admin_role = discord.utils.get(message.guild.roles, name="Admin")
         if admin_role in message.author.roles:
             msgs = 0
-            async for message in message.channel.history(limit=5000):
+            async for message in message.channel.history(limit=10000):
                 msgs += 1
             count = msgs - 1
             await message.channel.send(count)
