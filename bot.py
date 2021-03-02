@@ -217,7 +217,7 @@ async def on_message(message):
 
 @client.event
 async def on_message_delete(message):
-    send_to_admin(f'A message by {message.author} in {message.channel} was deleted')
+    # send_to_admin(f'A message by {message.author} in {message.channel} was deleted')
     aditya = 446746483962675211
     deleted_msgs = client.get_channel(757668799163006997)
     aditya_channel = client.get_channel(765017613859422219)
