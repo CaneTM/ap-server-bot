@@ -139,7 +139,8 @@ async def on_message(message):
                     contributors.append(message.author.nick)
                 else:
                     contributors.append(message.author.name)
-            await message.channel.send(contributors)
+            most_bruhs = max(contributors, key=contributors.count)
+            await message.channel.send(most_bruhs)
         else:
             await message.channel.send('You must be an Admin to execute this command')
 
