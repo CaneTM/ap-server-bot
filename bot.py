@@ -124,7 +124,7 @@ async def on_message(message):
         if admin_role in message.author.roles:
             await message.channel.send('Counting...')
             msgs = 0
-            async for message in message.channel.history(limit=10000):
+            async for message in message.channel.history(limit=20000):
                 msgs += 1
             count = msgs - 1
             await message.channel.send(count)
@@ -136,7 +136,7 @@ async def on_message(message):
         admin_role = discord.utils.get(message.guild.roles, name="Admin")
         if admin_role in message.author.roles:
             await message.channel.send('Counting...')
-            async for message in message.channel.history(limit=10000):
+            async for message in message.channel.history(limit=20000):
                 contributors.append(message.author.name)
                 # if message.author.nick is not None:
                 #     contributors.append(message.author.nick)
