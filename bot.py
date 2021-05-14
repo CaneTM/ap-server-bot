@@ -137,13 +137,13 @@ async def on_message(message):
         if admin_role in message.author.roles:
             await message.channel.send('Counting...')
             async for message in message.channel.history(limit=10000):
-                # contributors.append(message.author.name)
-                if message.author.nick is not None:
-                    contributors.append(message.author.nick)
-                else:
-                    contributors.append(message.author.name)
+                contributors.append(message.author.name)
+                # if message.author.nick is not None:
+                #     contributors.append(message.author.nick)
+                # else:
+                #     contributors.append(message.author.name)
             most_bruhs = max(contributors, key=contributors.count)
-            await message.channel.send('The person with the most BRUHs in bruh chain is ' + most_bruhs)
+            await message.channel.send('The person who contributed the most is ' + most_bruhs)
         else:
             await message.channel.send('You must be an Admin to execute this command')
 
