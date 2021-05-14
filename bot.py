@@ -135,7 +135,7 @@ async def on_message(message):
         admin_role = discord.utils.get(message.guild.roles, name="Admin")
         if admin_role in message.author.roles:
             async for message in message.channel.history(limit=10):
-                contributors.append(message.author)
+                contributors.append(message.author.nick)
             await message.channel.send(contributors)
         else:
             await message.channel.send('You must be an Admin to execute this command')
