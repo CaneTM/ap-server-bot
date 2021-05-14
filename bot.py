@@ -134,13 +134,13 @@ async def on_message(message):
         contributors = []
         admin_role = discord.utils.get(message.guild.roles, name="Admin")
         if admin_role in message.author.roles:
-            async for message in message.channel.history(limit=10):
+            async for message in message.channel.history(limit=10000):
                 if message.author.nick != None:
                     contributors.append(message.author.nick)
                 else:
                     contributors.append(message.author.name)
             most_bruhs = max(contributors, key=contributors.count)
-            await message.channel.send(most_bruhs)
+            await message.channel.send('The person with the most BRUHs in bruh chain is ' + most_bruhs)
         else:
             await message.channel.send('You must be an Admin to execute this command')
 
