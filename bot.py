@@ -122,6 +122,7 @@ async def on_message(message):
     if message.content.startswith('!count'):
         admin_role = discord.utils.get(message.guild.roles, name="Admin")
         if admin_role in message.author.roles:
+            await message.channel.send('Counting...')
             msgs = 0
             async for message in message.channel.history(limit=10000):
                 msgs += 1
@@ -130,12 +131,13 @@ async def on_message(message):
         else:
             await message.channel.send('You must be an Admin to execute this command')
 
-    if message.content.startswith('!u'):
+    if message.content.startswith('!user-count'):
         contributors = []
         admin_role = discord.utils.get(message.guild.roles, name="Admin")
         if admin_role in message.author.roles:
+            await message.channel.send('Counting...')
             async for message in message.channel.history(limit=10000):
-                if message.author.nick != None:
+                if message.author.nick is not None:
                     contributors.append(message.author.nick)
                 else:
                     contributors.append(message.author.name)
