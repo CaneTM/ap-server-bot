@@ -127,7 +127,7 @@ async def on_message(message):
             async for message in message.channel.history(limit=20000):
                 msgs += 1
             count = msgs - 1
-            await message.channel.send(count)
+            await message.channel.send(f"{count} total messages")
         else:
             await message.channel.send('You must be an Admin to execute this command')
 
